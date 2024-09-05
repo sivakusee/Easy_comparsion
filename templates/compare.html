@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .changed-line { background-color: red; color: white; }
+        .deleted-line { background-color: green; color: white; }
+        .added-line { background-color: green; color: white; }
+        .changed-word { background-color: orange; }
+        .container {
+            margin-top: 20px;
+        }
+        .diff-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        pre {
+            width: 45%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Comparison Result</h1>
+        <div class="diff-container">
+            <div>
+                <h2>File 1</h2>
+                <pre>{{ diff1|safe }}</pre>
+            </div>
+            <div>
+                <h2>File 2</h2>
+                <pre>{{ diff2|safe }}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

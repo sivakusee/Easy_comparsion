@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Comparison</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        .changed-line { background-color: red; color: white; }
+        .deleted-line { background-color: red; color: white; }
+        .added-line { background-color: green; color: white; }
+        .changed-word { background-color: orange; }
+        .diff-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .diff-container > div {
+            width: 45%;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            width: 45%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Upload Files to Compare</h1>
+        <form action="/compare" method="post" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <label for="file1">File 1:</label>
+                <input type="file" id="file1" name="file1" class="form-control-file" required>
+            </div>
+            <div class="form-group">
+                <label for="file2">File 2:</label>
+                <input type="file" id="file2" name="file2" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Compare</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1 class="text-center">Comparison Result</h1>
+        <div class="diff-container">
+            <div class="file1">
+                <h2>File 1</h2>
+                <pre>{{ diff1|safe }}</pre>
+            </div>
+            <div class="file2">
+                <h2>File 2</h2>
+                <pre>{{ diff2|safe }}</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
